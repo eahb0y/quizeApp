@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'quiz_brain.dart';
+
+QuestionBrain questionBrain = QuestionBrain();
+
 void main() => runApp(const Quizzler());
 
 class Quizzler extends StatelessWidget {
@@ -7,7 +11,16 @@ class Quizzler extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const MaterialApp(
+      home: Scaffold(
+        body: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.0),
+            child: QuizPage(),
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -21,6 +34,56 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Expanded(
+          flex: 4,
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Text(questionBrain.questionBank[0].getQuestionText(),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 25.0,
+                )),
+          ),
+        ),
+        Expanded(
+            child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: TextButton(
+                onPressed: () {},
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.green,
+                ),
+                child: const Text(
+                  'True',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.0,
+                  ),
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () {},
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.red,
+              ),
+              child: const Text(
+                'False',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20.0,
+                ),
+              ),
+            ),
+          ],
+        ))
+      ],
+    );
   }
 }
