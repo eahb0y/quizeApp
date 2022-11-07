@@ -11,9 +11,10 @@ class Quizzler extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: Scaffold(
-        body: SafeArea(
+        backgroundColor: Colors.grey.shade900,
+        body: const SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.0),
             child: QuizPage(),
@@ -38,51 +39,58 @@ class _QuizPageState extends State<QuizPage> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Expanded(
-          flex: 4,
+          flex: 1,
           child: Padding(
             padding: const EdgeInsets.all(10.0),
-            child: Text(questionBrain.questionBank[0].getQuestionText(),
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 25.0,
-                )),
+            child: Center(
+              child: Text(questionBrain.questionBank[0].getQuestionText(),
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 25.0,
+                  )),
+            ),
           ),
         ),
         Expanded(
+            flex: 2,
             child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: TextButton(
-                onPressed: () {},
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.green,
-                ),
-                child: const Text(
-                  'True',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20.0,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: TextButton(
+                    onPressed: () {},
+                    style: TextButton.styleFrom(
+                      backgroundColor: Colors.green,
+                    ),
+                    child: const Text(
+                      'True',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20.0,
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-            TextButton(
-              onPressed: () {},
-              style: TextButton.styleFrom(
-                backgroundColor: Colors.red,
-              ),
-              child: const Text(
-                'False',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20.0,
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: TextButton(
+                    onPressed: () {},
+                    style: TextButton.styleFrom(
+                      backgroundColor: Colors.red,
+                    ),
+                    child: const Text(
+                      'False',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20.0,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ],
-        ))
+              ],
+            ))
       ],
     );
   }
