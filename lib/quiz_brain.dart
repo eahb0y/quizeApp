@@ -1,8 +1,9 @@
 import 'question.dart';
 
 class QuestionBrain {
-  List<Question> questionBank = [
-    //TODO: make it private
+  int _questionNumber = 0;
+
+  final List<Question> _questionBank = [
     Question(text: 'Some cats are actually allergic to humans', answer: true),
     Question(
         text: 'You can lead a cow down stairs but not up stairs.',
@@ -42,4 +43,36 @@ class QuestionBrain {
             'In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.',
         answer: true),
   ];
+
+  void nextQuestion() {
+    if (_questionNumber < _questionBank.length - 1) {
+      _questionNumber++;
+    } else {
+      _questionNumber = 0;
+    }
+  }
+
+  bool isFinished() {
+    if (_questionNumber >= _questionBank.length - 1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  String getQuestionText() {
+    return _questionBank[_questionNumber].getQuestionText();
+  }
+
+  bool getQuestionAnswer() {
+    return _questionBank[_questionNumber].getQuestionAnswer();
+  }
+
+  int getQuestionNumber() {
+    return _questionNumber;
+  }
+
+  int getNumberOfQuestions() {
+    return _questionBank.length;
+  }
 }
